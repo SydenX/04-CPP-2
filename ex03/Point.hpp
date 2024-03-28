@@ -6,7 +6,7 @@
 /*   By: jtollena <jtollena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 14:30:10 by jtollena          #+#    #+#             */
-/*   Updated: 2024/03/28 13:41:25 by jtollena         ###   ########.fr       */
+/*   Updated: 2024/03/28 14:50:56 by jtollena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@ class Point {
 		const Fixed getX() const;
 		const Fixed getY() const;
 };
+
+bool bsp( Point const a, Point const b, Point const c, Point const point);
 
 #endif
