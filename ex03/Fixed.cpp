@@ -6,21 +6,24 @@
 /*   By: jtollena <jtollena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 14:30:15 by jtollena          #+#    #+#             */
-/*   Updated: 2024/03/26 15:19:15 by jtollena         ###   ########.fr       */
+/*   Updated: 2024/03/28 15:12:03 by jtollena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
+//Constructor
 Fixed::Fixed() {
 	this->vf = 0;
 	return;
 }
 
+//Destructor
 Fixed::~Fixed(void){
 	return;
 }
 
+//Copy-Constructor
 Fixed::Fixed(Fixed const &fixed) {
 	*this = fixed;
 }
@@ -33,6 +36,9 @@ Fixed::Fixed(const float toVf) {
 	this->vf = roundf(toVf * (1 << this->bits));
 }
 
+/*		= + - * /		*/
+
+//Copy-Assignment Operator Overload
 Fixed&	Fixed::operator=(Fixed const &fixed){
 	this->vf = fixed.getRawBits();
 	return *this;
@@ -55,6 +61,8 @@ Fixed	Fixed::operator*(Fixed const &fixed) const{
 Fixed	Fixed::operator/(Fixed const &fixed) const{
 	return Fixed(this->toFloat() / fixed.toFloat());
 }
+
+/*		> >= < <= == != 		*/
 
 bool	Fixed::operator>(Fixed const &fixed) const{
 	return (this->vf > fixed.getRawBits());
@@ -80,6 +88,8 @@ bool	Fixed::operator!=(Fixed const &fixed) const{
 	return (this->vf != fixed.getRawBits());
 }
 
+/* 		++ --		*/
+
 Fixed	Fixed::operator++() {
 	this->vf++;
 	return *this;
@@ -101,6 +111,8 @@ Fixed	Fixed::operator--(int) {
 	this->vf--;
 	return tmp;
 }
+
+/*		max min		*/
 
 Fixed const& 	Fixed::max(Fixed const& first, Fixed const& second){
 	if (first.toFloat() >= second.toFloat())
@@ -126,16 +138,19 @@ Fixed& 	Fixed::min(Fixed& first, Fixed& second){
 	return second;
 }
 
+/*		<< >>		*/
+
 std::ostream&	operator<<(std::ostream &output, Fixed const &fixed){
 	output << fixed.toFloat();
 	return output;
 }
 
 std::istream&	operator>>(std::istream &input, Fixed const &fixed){
-	// input >> fixed.setRawBits();
 	fixed.getRawBits();
 	return input;
 }
+
+/*		Declared functions		*/
 
 int Fixed::getRawBits() const {
 	return this->vf;}
