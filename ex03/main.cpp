@@ -6,12 +6,19 @@
 /*   By: jtollena <jtollena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 14:29:35 by jtollena          #+#    #+#             */
-/*   Updated: 2024/03/28 14:51:41 by jtollena         ###   ########.fr       */
+/*   Updated: 2024/04/03 11:43:50 by jtollena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Point.hpp"
+
+/*
+		    p2(3, 3)
+			  /  \
+			 /    \
+	p1(0, 0) ------ p3(6, 0)
+*/
 
 int main( void ) {
 	Point p1 = Point(0, 0);
